@@ -1,7 +1,7 @@
 Quick and dirty scanner for IoC's related to 2025 Notepad++ hack.
 
 What it does:
--Scans list of directories for known malicious file hashes
+-Scans list of directories for known malicious file hashes, for all users
 -Scans for related mutex
 -Scans registry and services for known persistance 
 
@@ -22,3 +22,6 @@ What it does not do:
 If a scanned item could not be accessed (locked, no permissions, etc) it will be displayed in the grid.
 If a scanned item is flagged suspicious or malicious it will be shown as red on the grid.
 If you choose to display all scanned items, items accessed and not flagged will be shown as green.
+
+Running as admin allows accessing files without issues, and accessing files in other user profiles, as well as scanning the registry and services on the machine and mutex.
+This was created using .NET 4.8 to allow the most compatibility without the need to download external libraries (such as newer .NET versions).
