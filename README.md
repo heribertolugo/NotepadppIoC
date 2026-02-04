@@ -1,3 +1,4 @@
+```
 Quick and dirty scanner for IoC's related to 2025 Notepad++ hack.
 
 What it does:
@@ -25,3 +26,4 @@ If you choose to display all scanned items, items accessed and not flagged will 
 
 Running as admin allows accessing files without issues, and accessing files in other user profiles, as well as scanning the registry and services on the machine and mutex.
 This was created using .NET 4.8 to allow the most compatibility without the need to download external libraries (such as newer .NET versions).
+```
