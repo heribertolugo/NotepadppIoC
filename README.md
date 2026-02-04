@@ -18,6 +18,7 @@ What it does not do:
 -Guarantee you weren't/aren't infected/targeted.
 -Check history of websites accessed from the machine
 -Check cmd/powershell arguments made in the machine
+-Check event log
 -Remove/alter/edit any files/items in the system. Even if they match a malicious signature
 
 If a scanned item could not be accessed (locked, no permissions, etc) it will be displayed in the grid.
