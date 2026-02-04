@@ -26,8 +26,9 @@ If you choose to display all scanned items, items accessed and not flagged will 
 
 Running as admin allows accessing files without issues, and accessing files in other user profiles, as well as scanning the registry and services on the machine and mutex.
 This was created using .NET 4.8 to allow the most compatibility without the need to download external libraries (such as newer .NET versions).
-
-Primary sources for information were:
-https://securelist.com/notepad-supply-chain-attack/118708/
-https://www.rapid7.com/blog/post/tr-chrysalis-backdoor-dive-into-lotus-blossoms-toolkit/
 ```
+
+
+Primary sources for information were:  
+https://securelist.com/notepad-supply-chain-attack/118708/  
+https://www.rapid7.com/blog/post/tr-chrysalis-backdoor-dive-into-lotus-blossoms-toolkit/  
