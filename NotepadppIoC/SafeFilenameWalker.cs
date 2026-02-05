@@ -17,6 +17,25 @@ namespace NotepadppIoC
             var walker = new SafeFilenameWalker();
 
             return walker.Search(path, searchSubdirectories);
+
+            //DirectoryInfo dInfo = new DirectoryInfo(path);
+
+            //foreach (var file in dInfo.GetFiles())
+            //{
+            //    yield return file.FullName;
+            //}
+
+            //if (searchSubdirectories)
+            //{
+            //    var dInfos = dInfo.GetDirectories();
+            //    foreach (var info in dInfos)
+            //    {
+            //        foreach (var file in EnumerateFiles(info.FullName, searchSubdirectories))
+            //        {
+            //            yield return file;
+            //        }
+            //    }
+            //}
         }
 
         // ************************************************************************** \\
@@ -72,8 +91,9 @@ namespace NotepadppIoC
 
             // temp fix for processing hidden files
             // shell objFolder.Items() will not enumerate these items
-            List<string> netItems = System.IO.Directory.GetFiles(path).ToList();
-            List<string> netFolders = System.IO.Directory.GetDirectories(path).ToList();
+            bool directoryExists = System.IO.Directory.Exists(path);
+            List<string> netItems = directoryExists ? System.IO.Directory.GetFiles(path).ToList() : new List<string>();
+            List<string> netFolders = directoryExists ? System.IO.Directory.GetDirectories(path).ToList() : new List<string>();
 
             foreach (FolderItem2 folderItem2 in objFolder.Items())
             {
@@ -87,15 +107,13 @@ namespace NotepadppIoC
                         fileData = item.Path;
                         netItems.Remove(item.Path);
                     }
-                    catch (Exception)
-                    {
-                    }
+                    catch (Exception) { }
                     if (fileData == null)
                         continue;
 
                     yield return fileData;
                 }
-                else if (searchSubdirectories)
+                else if (searchSubdirectories && directoryExists)
                 {
                     foreach (string file in this.Search(item.Path))
                     {
@@ -145,10 +163,7 @@ namespace NotepadppIoC
             {
                 directories = System.IO.Directory.GetDirectories(path);
             }
-            catch (Exception ex)
-            {
-
-            }
+            catch (Exception) { }
 
             foreach (string directory in directories)
             {
@@ -168,10 +183,7 @@ namespace NotepadppIoC
             {
                 files = System.IO.Directory.GetFiles(path);
             }
-            catch (Exception ex)
-            {
-
-            }
+            catch (Exception) { }
 
             foreach (string file in files)
             {
