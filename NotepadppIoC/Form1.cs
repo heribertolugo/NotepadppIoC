@@ -358,7 +358,7 @@ namespace NotepadppIoC
                     return;
                 }
 
-                var files = Directory.EnumerateFiles(cleanPath, "*", SearchOption.AllDirectories);
+                var files = SafeFilenameWalker.EnumerateFiles(cleanPath, true);// Directory.EnumerateFiles(cleanPath, "*", SearchOption.AllDirectories);
 
                 foreach (var file in files)
                 {
@@ -418,7 +418,7 @@ namespace NotepadppIoC
                     {
                         if (showScanned)
                         {
-                            var ioc = new IoC() { Path = file, Issue = false, Message = "SHA not found" };
+                            var ioc = new IoC() { Sha = sha256, Path = file, Issue = false, Message = "SHA not found" };
                             this.dataGridView1.InvokeIfRequired(d =>
                             {
                                 this._ioCs.Add(ioc);
